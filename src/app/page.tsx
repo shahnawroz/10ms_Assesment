@@ -1,8 +1,14 @@
 import Title from "@/app/components/Title";
+import BodyMenu from "@/app/components/BodyMenu"; // Update the path if needed
+
 export default function Home() {
   return (
-    <div className=" flex flex-col">
+    <div className="flex flex-col space-y-4">
       <Title />
+
+      <div className="flex justify-start w-[50%] ml-8">
+        <BodyMenu />
+      </div>
     </div>
   );
 }
