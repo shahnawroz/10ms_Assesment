@@ -14,7 +14,7 @@ export default function Footer() {
     <footer className="fixed bottom-0 left-0 w-full bg-white text-gray-700 py-8 px-6 md:px-12 z-50 shadow-md">
       <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between gap-8">
         {/* Left Section: Logo + App Download */}
-        <div className="flex flex-col items-start space-y-3 min-w-[220px]">
+        <div className="flex flex-col items-start space-y-6 min-w-[220px]">
           <Image
             src="https://cdn.10minuteschool.com/images/svg/10mslogo-svg.svg"
             alt="10 Minute School"
@@ -60,7 +60,7 @@ export default function Footer() {
           {/* Company */}
           <div>
             <h3 className="font-semibold text-gray-900 mb-3">কোম্পানি</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-4">
               <li>ক্যারিয়ার / নিয়োগ বিজ্ঞপ্তি</li>
               <li>শিক্ষক হিসেবে যোগ দিন</li>
               <li>অ্যাফিলিয়েট হিসেবে যোগ দিন</li>
@@ -73,7 +73,7 @@ export default function Footer() {
           {/* Others */}
           <div>
             <h3 className="font-semibold text-gray-900 mb-3">অন্যান্য</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-4">
               <li>ব্লগ</li>
               <li>ফ্রি নোটস ও গাইড</li>
               <li>চাকরি প্রস্তুতি কোর্সসমূহ</li>
@@ -84,11 +84,11 @@ export default function Footer() {
         </div>
 
         {/* Right Section: Contact & Social */}
-        <div className="flex flex-col min-w-[220px]">
+       <div className="flex flex-col min-w-[220px] ">
           <h3 className="font-semibold text-gray-900 mb-3">আমাদের যোগাযোগ মাধ্যম</h3>
-          <ul className="text-sm text-gray-600 space-y-1 mb-4">
+          <ul className="text-sm text-gray-600 space-y-4 mb-4">
             <li>
-              কল করুন: <span className="text-green-600 font-semibold">16910</span> (24x7)
+              কল করুন: <span className="text-green-600 font-semibold ">16910</span> (24x7)
             </li>
             <li>
               হোয়াটসঅ্যাপ:{" "}
@@ -96,7 +96,7 @@ export default function Footer() {
                 href="https://wa.me/8801896016252"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-green-600 underline"
+                className="text-green-600 "
               >
                 +8801896016252
               </a>{" "}
@@ -106,7 +106,7 @@ export default function Footer() {
               দেশের বাইরে থেকে:{" "}
               <a
                 href="tel:+8809610916910"
-                className="text-green-600 underline"
+                className="text-green-600 "
               >
                 +880 9610916910
               </a>
@@ -115,7 +115,7 @@ export default function Footer() {
               ইমেইল:{" "}
               <a
                 href="mailto:support@10minuteschool.com"
-                className="text-green-600 underline"
+                className="text-green-600 "
               >
                 support@10minuteschool.com
               </a>
@@ -123,7 +123,7 @@ export default function Footer() {
           </ul>
 
           {/* Social Icons */}
-          <div className="flex space-x-4 text-gray-700">
+          <div className="flex space-x-8 text-gray-700 ">
             <a
               href="https://facebook.com/10minuteschool"
               target="_blank"
