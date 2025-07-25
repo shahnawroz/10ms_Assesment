@@ -11,7 +11,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="fixed bottom-0 left-0 w-full bg-white text-gray-700 py-8 px-6 md:px-12 z-50 shadow-md">
+   <footer className="bg-white text-gray-700 py-8 px-6 md:px-12 shadow-md">
       <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between gap-8">
         {/* Left Section: Logo + App Download */}
         <div className="flex flex-col items-start space-y-6 min-w-[220px]">
