@@ -6,8 +6,10 @@ export default function Home() {
     <div className="flex flex-col space-y-4">
       <Title />
 
-      <div className="flex justify-start w-[50%] ml-8">
-        <BodyMenu />
+      <div className="flex justify-center w-full">
+        <div className="w-[55%]">
+          <BodyMenu />
+        </div>
       </div>
     </div>
   );

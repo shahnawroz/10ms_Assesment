@@ -54,7 +54,7 @@ export default function BodyMenu() {
   const arrowBaseColor = "#818180";
 
   return (
-    <div className="relative w-full flex justify-center border-b border-gray-200 py-2">
+    <div className="relative w-[600px] flex justify-center border-b border-gray-200 py-2">
       {/* Width: 4 x 150px = 600px */}
       <div className="relative w-[600px]">
         {/* Left Arrow */}
