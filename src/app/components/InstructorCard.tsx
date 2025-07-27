@@ -13,7 +13,7 @@ type Props = {
 
 const InstructorCard: React.FC<Props> = ({ instructor }) => {
   return (
-   <div className="border rounded-md p-4 flex items-start space-x-4 shadow-sm max-w-xl h-35 bg-white border-[#ffffff]">
+   <div className="border rounded-md p-4 flex items-start space-x-4 shadow-sm max-w-2xl h-35 bg-white border-[#ffffff]">
       <Image
         src={instructor.image}
         alt={instructor.name}

@@ -1,6 +1,7 @@
 import Title from "@/app/components/Title";
 import BodyMenu from "@/app/components/BodyMenu";
 import InstructorCard, { Instructor } from "@/app/components/InstructorCard";
+import FeatureCardList from "../app/components/FeatureList";
 
 export default function Home() {
   const instructors: Instructor[] = [
@@ -30,6 +31,9 @@ export default function Home() {
             {instructors.map((instructor, idx) => (
               <InstructorCard key={idx} instructor={instructor} />
             ))}
+          </div>
+           <div className="mt-8">
+            <FeatureCardList />
           </div>
         </div>
       </div>
