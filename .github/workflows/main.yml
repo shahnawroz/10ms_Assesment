@@ -28,4 +28,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npx gh-pages -d out --repo https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/YourGitHubUsername/10ms_Assesment.git
+          npx gh-pages -d out --repo https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/shahnawroz/10ms_Assesment.git
