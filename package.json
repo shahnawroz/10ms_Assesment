@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "private": true,
  "scripts": {
-  "build": "next build",
-  "deploy": "npm run build && gh-pages -d out"
+ "build": "next build"
 },
   "dependencies": {
     "lucide-react": "^0.525.0",
