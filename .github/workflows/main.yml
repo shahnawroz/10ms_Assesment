@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - main  # or your default branch
+      - main  # your main branch
 
 jobs:
   build-and-deploy:
@@ -22,10 +22,10 @@ jobs:
         run: npm ci
 
       - name: Build Next.js static export
-        run: npm run build
+        run: npm run build  # this will generate the 'out' directory because of output: export in next.config.js
 
       - name: Deploy to GitHub Pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npx gh-pages -d out --repo https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/yourusername/yourrepo.git
+          npx gh-pages -d out --repo https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/YourGitHubUsername/10ms_Assesment.git
