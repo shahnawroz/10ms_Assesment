@@ -13,6 +13,7 @@ import VideoSlider from "./components/VideoSlider";
 import IeltsFeatureCourse from "./components/IELTSFeatureCourse";
 import PaymentCard from "./components/PaymentCard";
 import FAQ from "./components/FaqSection";
+import RightSidebar from "./components/RightSidebar";
 
 export default function Home() {
   const instructors: Instructor[] = [
@@ -35,17 +36,15 @@ export default function Home() {
       </div>
 
       {/* Page Layout */}
-      <div className="max-w-7xl mx-auto px-4 lg:px-6 py-10 flex flex-col lg:flex-row gap-10 items-start">
-        {/* Right Sidebar (Sticky Box) */}
-
-        {/* Left Content */}
-        <div className="flex-1 space-y-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10 flex flex-col lg:flex-row gap-6 md:gap-10 items-start">
+        {/* Left Content - Main content area */}
+        <div className="flex-1 w-full lg:w-auto space-y-8 md:space-y-10 order-2 lg:order-1">
           {/* Title Section at top of left column */}
           <TitleSection />
 
           {/* Instructor Section */}
           <div>
-            <h5 className="text-xl font-semibold mb-4">Course instructor</h5>
+            <h5 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Course instructor</h5>
             {instructors.map((instructor, idx) => (
               <InstructorCard key={idx} instructor={instructor} />
             ))}
@@ -53,91 +52,67 @@ export default function Home() {
 
           {/* Features Section */}
           <div>
-            <h5 className="text-xl font-semibold mb-4">
+            <h5 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
               How the course is laid out
             </h5>
             <FeatureCardList />
           </div>
+          
           <div>
-            <h5 className="text-xl font-semibold mb-4">
+            <h5 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
               How the course is laid out
             </h5>
             <IELTSGuideCard />
           </div>
+          
           <div>
-            <h5 className="text-xl font-semibold mb-4">
+            <h5 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
               What you will learn by doing the course
             </h5>
             <FeatureSection />
           </div>
+          
           <div>
-            <h5 className="text-xl font-semibold mb-4">Content preview</h5>
+            <h5 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Content preview</h5>
             <AccordionSection />
           </div>
+          
           <div>
-           
             <CourseDetails />
           </div>
-          <div>
           
+          <div>
             <ImageContent />
           </div>
+          
           <div>
-            <h5 className="text-xl font-semibold mb-4">
+            <h5 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
               Free items with this products-
             </h5>
             <IELTSFeatureSection />
           </div>
+          
           <div>
-           
             <VideoSlider />
           </div>
+          
           <div>
-
-          <IeltsFeatureCourse />
+            <IeltsFeatureCourse />
           </div>
+          
           <div>
-
             <PaymentCard />
           </div>
+          
           <div>
-
             <FAQ />
           </div>
         </div>
-        <div className="order-first w-full lg:order-none lg:w-[320px] lg:shrink-0 lg:sticky lg:top-10 space-y-4">
+
+        {/* Right Sidebar - Sticky on desktop, appears first on mobile */}
+        <div className="w-full lg:w-[320px] order-1 lg:order-2 lg:sticky lg:top-6 space-y-4 mb-6 lg:mb-0">
           {/* Course Preview Image */}
-          <Image
-            src="https://cdn.10minuteschool.com/images/skills/lp/ms_onset.jpg"
-            alt="Course Banner"
-            className="rounded-md w-full object-cover"
-            width={320}
-            height={180}
-            layout="responsive"
-          />
-
-          {/* Pricing & CTA */}
-          <div className="text-center bg-gray-50 p-4 rounded-md shadow-sm">
-            <h3 className="text-2xl font-bold text-gray-900">
-              ৳3850
-              <span className="line-through text-sm text-gray-500 ml-2">
-                ৳5500
-              </span>
-            </h3>
-            <p className="text-green-600 font-semibold text-sm">৩০% ছাড় চলছে</p>
-
-            <button className="mt-4 w-full bg-green-600 text-white py-2 rounded-md font-semibold hover:bg-green-700 transition duration-200">
-              এখনই ভর্তি হন
-            </button>
-          </div>
-
-          {/* Features List */}
-          <ul className="text-sm text-gray-700 space-y-1">
-            <li>✅ ১০০+ ভিডিও লেসন</li>
-            <li>📜 সার্টিফিকেট</li>
-            <li>📱 মোবাইল ও কম্পিউটারে দেখার সুবিধা</li>
-            <li>⏳ লাইফটাইম অ্যাক্সেস</li>
-          </ul>
+         <RightSidebar />
         </div>
       </div>
     </div>

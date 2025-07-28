@@ -7,15 +7,7 @@ import { useState } from "react";
 const navItems = [
   {
     label: "ক্লাস ৬-১২",
-    submenu: [
-      "ক্লাস ৬",
-      "ক্লাস ৭",
-      "ক্লাস ৮",
-      "ক্লাস ৯",
-      "ক্লাস ১০",
-      "ক্লাস ১১",
-      "ক্লাস ১২",
-    ],
+    submenu: ["ক্লাস ৬", "ক্লাস ৭", "ক্লাস ৮", "ক্লাস ৯", "ক্লাস ১০", "ক্লাস ১১", "ক্লাস ১২"],
   },
   {
     label: "স্কিলস",
@@ -43,7 +35,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white shadow-sm px-4 py-3 relative z-50">
+    <header className="sticky top-0 bg-white shadow-sm px-4 py-3 z-50">
       <div className="max-w-[1440px] mx-auto flex items-center justify-between gap-4">
         {/* Logo */}
         <div className="flex items-center min-w-[100px]">
@@ -53,6 +45,7 @@ export default function Header() {
             width={100}
             height={40}
             className="object-contain"
+            priority
           />
         </div>
 
@@ -73,7 +66,7 @@ export default function Header() {
               <button className="flex items-center gap-1 hover:text-red-500">
                 {item.label} <FiChevronDown className="text-xs" />
               </button>
-              <ul className="absolute left-0 top-full w-48 bg-white border border-gray-200 rounded shadow-lg text-gray-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-200 z-50">
+              <ul className="absolute left-0 top-full w-48 bg-white border border-gray-200 rounded shadow-lg text-gray-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                 {item.submenu.map((subItem) => (
                   <li
                     key={subItem}
@@ -101,6 +94,7 @@ export default function Header() {
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="text-gray-700 text-2xl"
+            aria-label="Toggle menu"
           >
             {menuOpen ? <FiX /> : <FiMenu />}
           </button>
@@ -108,14 +102,18 @@ export default function Header() {
       </div>
 
       {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="xl:hidden bg-white border-t mt-3 p-4 space-y-4 text-sm font-medium text-gray-800">
+      <div
+        className={`xl:hidden transition-all duration-300 overflow-hidden ${
+          menuOpen ? "max-h-[1000px]" : "max-h-0"
+        }`}
+      >
+        <div className="bg-white border-t mt-3 p-4 space-y-4 text-sm font-medium text-gray-800">
           {navItems.map((item) => (
             <div key={item.label}>
-              <details>
+              <details className="group">
                 <summary className="cursor-pointer flex items-center justify-between py-2">
                   {item.label}
-                  <FiChevronDown />
+                  <FiChevronDown className="transition-transform group-open:rotate-180" />
                 </summary>
                 <ul className="pl-4 mt-2 space-y-1">
                   {item.submenu.map((subItem) => (
@@ -130,6 +128,8 @@ export default function Header() {
               </details>
             </div>
           ))}
+
+          {/* Mobile Actions */}
           <div className="flex items-center gap-3 pt-4">
             <button className="border px-2 py-1 rounded text-gray-700">EN</button>
             <span className="text-green-600 font-semibold">📞 16910</span>
@@ -138,7 +138,7 @@ export default function Header() {
             </button>
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 }
