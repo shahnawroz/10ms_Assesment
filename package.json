@@ -2,10 +2,9 @@
   "name": "assesment",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
+ "scripts": {
   "build": "next build",
-  "export": "next export",
-  "deploy": "npm run build && npm run export && gh-pages -d out"
+  "deploy": "npm run build && gh-pages -d out"
 },
   "dependencies": {
     "lucide-react": "^0.525.0",

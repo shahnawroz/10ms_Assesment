@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - main  # or your default branch
+      - main
 
 jobs:
   build-and-deploy:
@@ -23,9 +23,6 @@ jobs:
 
       - name: Build Next.js static export
         run: npm run build
-
-      - name: Export static files
-        run: npm run export
 
       - name: Configure git user
         run: |
