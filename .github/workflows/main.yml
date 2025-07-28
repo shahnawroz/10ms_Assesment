@@ -32,4 +32,5 @@ jobs:
       - name: Deploy to GitHub Pages
         env:
           PAT: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-        run: npx gh-pages -d out --repo https://x-access-token:${PAT}@github.com/shahnawroz/10ms_Assesment.git
+        run: |
+          npx gh-pages -d out --repo https://x-access-token:${PAT}@github.com/shahnawroz/10ms_Assesment.git
