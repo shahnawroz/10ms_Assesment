@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "export": "next export",
-    "deploy": "npm run build && npm run export && gh-pages -d out"
+    "export": "next build",
+    "deploy": "npm run build && gh-pages -d out"
   },
   "dependencies": {
     "lucide-react": "^0.525.0",
