@@ -14,6 +14,7 @@ import IeltsFeatureCourse from "./components/IELTSFeatureCourse";
 import PaymentCard from "./components/PaymentCard";
 import FAQ from "./components/FaqSection";
 import RightSidebar from "./components/RightSidebar";
+import VideoSlider1 from "./components/moreVideos";
 
 export default function Home() {
   const instructors: Instructor[] = [
@@ -44,7 +45,9 @@ export default function Home() {
 
           {/* Instructor Section */}
           <div>
-            <h5 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Course instructor</h5>
+            <h5 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
+              Course instructor
+            </h5>
             {instructors.map((instructor, idx) => (
               <InstructorCard key={idx} instructor={instructor} />
             ))}
@@ -57,53 +60,55 @@ export default function Home() {
             </h5>
             <FeatureCardList />
           </div>
-          
+
           <div>
             <h5 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
               How the course is laid out
             </h5>
             <IELTSGuideCard />
           </div>
-          
+
           <div>
             <h5 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
               What you will learn by doing the course
             </h5>
             <FeatureSection />
           </div>
-          
+
           <div>
-            <h5 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Content preview</h5>
+            <h5 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
+              Content preview
+            </h5>
             <AccordionSection />
           </div>
-          
+
           <div>
             <CourseDetails />
           </div>
-          
+
           <div>
             <ImageContent />
           </div>
-          
+
           <div>
             <h5 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
               Free items with this products-
             </h5>
             <IELTSFeatureSection />
           </div>
-          
+
           <div>
             <VideoSlider />
           </div>
-          
+
           <div>
             <IeltsFeatureCourse />
           </div>
-          
+
           <div>
             <PaymentCard />
           </div>
-          
+
           <div>
             <FAQ />
           </div>
@@ -112,8 +117,11 @@ export default function Home() {
         {/* Right Sidebar - Sticky on desktop, appears first on mobile */}
         <div className="w-full lg:w-[320px] order-1 lg:order-2 lg:sticky lg:top-6 space-y-4 mb-6 lg:mb-0">
           {/* Course Preview Image */}
-         <RightSidebar />
+          <RightSidebar />
         </div>
+      </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <VideoSlider1 />
       </div>
     </div>
   );

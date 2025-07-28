@@ -125,10 +125,10 @@ export default function VideoSlider() {
   }
 
   return (
-    <div className="relative max-w-[960px] mx-auto ">
+    <div className="relative w-full px-4 sm:px-6 md:px-8 xl:px-0 max-w-screen-xl mx-auto">
       {/* Section Title */}
       <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 text-left">
-        {sectionTitle}
+        <h1>আপনার জন্য আরও কিছু কোর্স</h1>
       </h1>
 
       {/* Slider Container */}
@@ -139,7 +139,7 @@ export default function VideoSlider() {
         {videos.map((video) => (
           <div
             key={video.id}
-            className="w-[300px] flex-shrink-0 bg-white border border-[#d4dce5] rounded-lg shadow-sm p-2 hover:shadow-md transition-shadow"
+            className="w-[90vw] sm:w-[300px] flex-shrink-0 bg-white border border-[#d4dce5] rounded-lg shadow-sm p-2 hover:shadow-md transition-shadow"
           >
             <div className="relative">
               <div className="relative w-full h-[170px]">
