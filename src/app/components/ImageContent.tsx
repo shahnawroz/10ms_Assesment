@@ -1,33 +1,84 @@
 // components/IELTSFeatureCard.tsx
+'use client';
+
+import { useState, useEffect } from 'react';
 import ImageFeatureCard from "./ImageFeatureCard";
+import { fetchIELTSCourse } from '../lib/api'; // Adjust the import path as necessary
+
+// Define types for the API response
+type FeatureItem = {
+  checklist: string[];
+  file_type: string;
+  file_url: string;
+  id: string;
+  title: string;
+  video_thumbnail: string;
+};
+
+type Section = {
+  type: string;
+  name: string;
+  values: FeatureItem[];
+};
+
+type ApiResponse = {
+  sections: Section[];
+};
 
 export default function IELTSFeatureCard() {
+  const [features, setFeatures] = useState<FeatureItem[]>([]);
+  const [sectionName, setSectionName] = useState('Course Features');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchIELTSCourse() as ApiResponse;
+        const featureSection = data.sections.find(
+          (section) => section.type === 'feature_explanations'
+        );
+
+        if (featureSection) {
+          setSectionName(featureSection.name || 'Course Features');
+          setFeatures(featureSection.values || []);
+        }
+      } catch (error) {
+        console.error('Error fetching features:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div className="text-center py-8">Loading features...</div>;
+  }
+
+  if (!features.length) {
+    return <div className="text-center py-8">No features available</div>;
+  }
+
   return (
+    <div className="">
+      <h2 className="text-2xl font-bold text-left mb-4">{sectionName}</h2>
     <div className="border border-[#d4dce5] rounded-xl p-6 bg-white shadow-sm max-w-5xl mx-auto space-y-6">
      
-        <ImageFeatureCard
-        title="ভিডিও লেকচার"
-        features={[
-          "IELTS Academic ও General Training নিয়ে আলোচনা",
-          "Reading, Writing, Listening ও Speaking এর Overview & Format",
-          "প্রতিটি প্রশ্নের ধরন-ভিত্তিক উত্তর করার স্ট্র্যাটেজি",
-          "ভিডিওর সাথে প্র্যাকটিসের সুযোগ",
-        ]}
-        imageSrc="https://cdn.10minuteschool.com/images/k-12-courses/ielts_mock_sqr.png"
-      />
-
-      <hr className="border-t border-[#d4dce5]" />
-
-      <ImageFeatureCard
-        title="Reading ও Listening Mock Tests"
-        features={[
-          "10 Reading & 10 Listening Mock Tests",
-          "Computer-delivered IELTS পরীক্ষার এক্সপেরিয়েন্স",
-          "উত্তর সাবমিট করার সাথে সাথেই রেজাল্ট",
-          "যেকোনো সময়, যেকোনো জায়গা থেকে মক টেস্ট",
-        ]}
-        imageSrc="https://cdn.10minuteschool.com/images/k-12-courses/ielts_mock_book_sqr.png"
-      />
+      
+      {features.map((feature, index) => (
+        <div key={feature.id}>
+          <ImageFeatureCard
+            title={feature.title}
+            features={feature.checklist}
+            imageSrc={feature.file_url}
+          />
+          {index < features.length - 1 && (
+            <hr className="border-t border-[#d4dce5] my-6" />
+          )}
+        </div>
+      ))}
+    </div>
     </div>
   );
 }

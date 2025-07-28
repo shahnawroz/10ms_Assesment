@@ -4,7 +4,7 @@ import { useState } from "react";
 
 interface AccordionItemProps {
   title: string;
-  children: string; // HTML string
+  children: React.ReactNode;
   lastItem?: boolean;
 }
 
@@ -54,12 +54,7 @@ export default function AccordionItem({
           </svg>
         )}
       </button>
-      {isOpen && (
-        <div
-          className="pb-2 text-sm text-gray-700"
-          dangerouslySetInnerHTML={{ __html: children }}
-        />
-      )}
+      {isOpen && <div className="pb-2 text-sm text-gray-700">{children}</div>}
     </div>
   );
 }

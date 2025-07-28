@@ -26,10 +26,10 @@ type ApiResponse = {
   sections: Section[];
 };
 
-export default function CourseDetails() {
+export default function FAQ() {
   const [showAll, setShowAll] = useState(false);
   const [aboutData, setAboutData] = useState<AboutItem[]>([]);
-  const [sectionName, setSectionName] = useState('Course Details');
+  const [sectionName, setSectionName] = useState('Frequently Asked Questions');
   const [loading, setLoading] = useState(true);
 
   // Fetch data from API
