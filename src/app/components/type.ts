@@ -1,8 +1,7 @@
-import { JSX } from "react";
+import React, { JSX } from "react";
 
-// types.ts
 export type FeatureCard = {
   icon: JSX.Element;
-  title: string;
+  title: React.ReactNode;   // allows JSX for styling
   description: string;
 };

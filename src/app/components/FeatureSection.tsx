@@ -6,7 +6,7 @@ import { features } from "../components/features";
 
 const FeatureSection = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4 bg-white p-6 rounded-md max-w-4xl mx-auto border">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4 bg-white p-6 rounded-md max-w-4xl mx-auto border border-[#d4dce5]">
       {features.map((feature, index) => (
         <FeatureCard
           key={index}
