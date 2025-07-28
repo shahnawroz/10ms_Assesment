@@ -9,6 +9,7 @@ import AccordionSection from "./components/AccordionSection";
 import CourseDetails from "./components/CourseDetails";
 import ImageContent from "./components/ImageContent";
 import IELTSFeatureSection from "./components/IELTSFeatureSection";
+import VideoSlider from "./components/VideoSlider";
 
 export default function Home() {
   const instructors: Instructor[] = [
@@ -75,12 +76,22 @@ export default function Home() {
             <CourseDetails />
           </div>
           <div>
-            <h5 className="text-xl font-semibold mb-4">Course Exclusive Feature</h5>
+            <h5 className="text-xl font-semibold mb-4">
+              Course Exclusive Feature
+            </h5>
             <ImageContent />
           </div>
           <div>
-            <h5 className="text-xl font-semibold mb-4">Free items with this products-</h5>
-          <IELTSFeatureSection />
+            <h5 className="text-xl font-semibold mb-4">
+              Free items with this products-
+            </h5>
+            <IELTSFeatureSection />
+          </div>
+          <div>
+            <h5 className="text-xl font-semibold mb-4">
+              Free items with this products-
+            </h5>
+            <VideoSlider />
           </div>
         </div>
         <div className="order-first w-full lg:order-none lg:w-[320px] lg:shrink-0 lg:sticky lg:top-10 space-y-4">
