@@ -5,7 +5,7 @@
   "scripts": {
     "build": "next build",
     "export": "next export",
-    "deploy": "gh-pages -d out"
+    "deploy": "npm run build && npm run export && gh-pages -d out"
   },
   "dependencies": {
     "lucide-react": "^0.525.0",
