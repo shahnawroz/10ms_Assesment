@@ -1,14 +1,12 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
 
-const isProd = process.env.NODE_ENV === "production";
-const repoName = "10ms_Assesment"; // Replace with your GitHub repo name
-
-const nextConfig: NextConfig = {
-  output: "export",
-  basePath: isProd ? `/${repoName}` : "",
-  assetPrefix: isProd ? `/${repoName}/` : "",
+const nextConfig = {
+  output: 'export',
+  basePath: isProd ? '/10ms_Assesment' : '',
+  assetPrefix: isProd ? '/10ms_Assesment/' : '',
   images: {
-    domains: ["cdn.10minuteschool.com"],
+    domains: ['cdn.10minuteschool.com'],
   },
 };
 

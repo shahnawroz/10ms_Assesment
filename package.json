@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
 "scripts": {
-  "build": "next build"
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint"
 },
   "dependencies": {
     "lucide-react": "^0.525.0",
