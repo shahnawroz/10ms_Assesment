@@ -5,6 +5,7 @@ import FeatureCardList from "@/app/components/FeatureList";
 import Image from "next/image";
 import IELTSGuideCard from "./components/IELTSGuideCard";
 import FeatureSection from "./components/FeatureSection";
+import AccordionSection from "./components/AccordionSection";
 
 export default function Home() {
   const instructors: Instructor[] = [
@@ -56,6 +57,10 @@ export default function Home() {
           <div>
             <h5 className="text-xl font-semibold mb-4">What you will learn by doing the course</h5>
             <FeatureSection />
+          </div>
+          <div>
+            <h5 className="text-xl font-semibold mb-4">Content preview</h5>
+           <AccordionSection />
           </div>
         </div>
           <div className="order-first w-full lg:order-none lg:w-[320px] lg:shrink-0 lg:sticky lg:top-10 space-y-4">
