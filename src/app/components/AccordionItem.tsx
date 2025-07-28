@@ -18,18 +18,21 @@ export default function AccordionItem({
 
   return (
     <div
-      className={`px-4 py-3 ${
+      className={`px-4 py-2 ${
         !lastItem ? "border-b border-dotted border-gray-300" : ""
-      }`}
+      }`} // py-3 to py-2 (less height)
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex justify-between items-center py-4 text-left hover:bg-gray-50 transition"
+        className="w-full flex justify-between items-center py-2 text-left hover:bg-gray-50 transition" // py-4 to py-2
       >
-        <span className="font-medium text-gray-800">{title}</span>
-        {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+        <span className="font-medium text-gray-800 text-sm">{title}</span>{" "}
+        {/* optional smaller font */}
+        {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}{" "}
+        {/* smaller icons */}
       </button>
-      {isOpen && <div className="pb-4 text-sm text-gray-700">{children}</div>}
+      {isOpen && <div className="pb-2 text-xs text-gray-700">{children}</div>}{" "}
+      {/* smaller padding, smaller text */}
     </div>
   );
 }

@@ -6,6 +6,7 @@ import Image from "next/image";
 import IELTSGuideCard from "./components/IELTSGuideCard";
 import FeatureSection from "./components/FeatureSection";
 import AccordionSection from "./components/AccordionSection";
+import CourseDetails from "./components/CourseDetails";
 
 export default function Home() {
   const instructors: Instructor[] = [
@@ -30,7 +31,6 @@ export default function Home() {
       {/* Page Layout */}
       <div className="max-w-7xl mx-auto px-4 lg:px-6 py-10 flex flex-col lg:flex-row gap-10 items-start">
         {/* Right Sidebar (Sticky Box) */}
-      
 
         {/* Left Content */}
         <div className="flex-1 space-y-10">
@@ -47,23 +47,33 @@ export default function Home() {
 
           {/* Features Section */}
           <div>
-            <h5 className="text-xl font-semibold mb-4">How the course is laid out</h5>
+            <h5 className="text-xl font-semibold mb-4">
+              How the course is laid out
+            </h5>
             <FeatureCardList />
           </div>
           <div>
-            <h5 className="text-xl font-semibold mb-4">How the course is laid out</h5>
+            <h5 className="text-xl font-semibold mb-4">
+              How the course is laid out
+            </h5>
             <IELTSGuideCard />
           </div>
           <div>
-            <h5 className="text-xl font-semibold mb-4">What you will learn by doing the course</h5>
+            <h5 className="text-xl font-semibold mb-4">
+              What you will learn by doing the course
+            </h5>
             <FeatureSection />
           </div>
           <div>
             <h5 className="text-xl font-semibold mb-4">Content preview</h5>
-           <AccordionSection />
+            <AccordionSection />
+          </div>
+          <div>
+            <h5 className="text-xl font-semibold mb-4">Content preview</h5>
+            <CourseDetails />
           </div>
         </div>
-          <div className="order-first w-full lg:order-none lg:w-[320px] lg:shrink-0 lg:sticky lg:top-10 space-y-4">
+        <div className="order-first w-full lg:order-none lg:w-[320px] lg:shrink-0 lg:sticky lg:top-10 space-y-4">
           {/* Course Preview Image */}
           <Image
             src="https://cdn.10minuteschool.com/images/skills/lp/ms_onset.jpg"
@@ -78,7 +88,9 @@ export default function Home() {
           <div className="text-center bg-gray-50 p-4 rounded-md shadow-sm">
             <h3 className="text-2xl font-bold text-gray-900">
               ৳3850
-              <span className="line-through text-sm text-gray-500 ml-2">৳5500</span>
+              <span className="line-through text-sm text-gray-500 ml-2">
+                ৳5500
+              </span>
             </h3>
             <p className="text-green-600 font-semibold text-sm">৩০% ছাড় চলছে</p>
 
