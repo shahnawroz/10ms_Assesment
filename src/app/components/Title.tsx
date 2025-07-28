@@ -22,14 +22,15 @@ export default function TitleSection() {
 
           {/* Rating Text */}
           <span className="text-gray-200 text-[15px]">
-            (৮২.৬% শিক্ষার্থী কোর্স শেষ & ৫ রেটিং দিয়েছেন)
+            (82.6% শিক্ষার্থী কোর্স শেষে ৫ রেটিং দিয়েছেন)
           </span>
         </div>
 
         <p className="text-gray-300 text-[15px] leading-relaxed">
-          Academic IELTS এবং General Training IELTS - এর কমপ্লিট প্রিপারেশন নিন একটি কোর্সেই! দেশের
-          IELTS Instructor এর গাইডলাইনে আপনার কাঙ্খিত ব্যান্ড স্কোরটি অর্জন করতে আজই জয়েন করুন আমাদের
-          IELTS Course-এ।
+          Get complete preparation of Academic IELTS and General Training IELTS
+          in one course! Join our IELTS Course today to achieve your desired
+          band score under the guidance of the best IELTS Instructor in the
+          country.
         </p>
       </div>
     </div>

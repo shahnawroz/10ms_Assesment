@@ -32,6 +32,7 @@ const featureData: FeatureCardType[] = [
 const FeatureList = () => {
   return (
     <div className="bg-[#0A1629] p-6 rounded-xl flex justify-center">
+        
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-3xl">
         {featureData.map((card, index) => (
           <FeatureCard key={index} {...card} />

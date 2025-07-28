@@ -21,32 +21,26 @@ export default function BodyMenu() {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  // Check scroll position to enable/disable arrows
   const checkScroll = () => {
     if (!scrollRef.current) return;
 
     const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
 
     setCanScrollLeft(scrollLeft > 0);
-    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 1); // -1 for floating precision
+    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 1);
   };
 
-  // On mount and on scroll, check scroll position
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
 
     checkScroll();
-
     el.addEventListener("scroll", checkScroll);
-
-    // Cleanup listener
     return () => el.removeEventListener("scroll", checkScroll);
   }, []);
 
   const scroll = (direction: "left" | "right") => {
     if (!scrollRef.current) return;
-
     const scrollAmount = direction === "left" ? -itemWidth : itemWidth;
     scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
   };
@@ -54,16 +48,14 @@ export default function BodyMenu() {
   const arrowBaseColor = "#818180";
 
   return (
-    <div className="relative w-[600px] flex justify-center border-b border-gray-200 py-2">
-      {/* Width: 4 x 150px = 600px */}
-      <div className="relative w-[600px]">
+    <div className="w-full border-b border-gray-200 bg-white">
+      <div className="relative max-w-7xl mx-auto">
         {/* Left Arrow */}
         <button
           onClick={() => scroll("left")}
           disabled={!canScrollLeft}
           className={`p-2 rounded-full absolute left-0 z-10 top-1/2 -translate-y-1/2
-            ${canScrollLeft ? "cursor-pointer" : "cursor-not-allowed opacity-40"}
-          `}
+            ${canScrollLeft ? "cursor-pointer" : "cursor-not-allowed opacity-40"}`}
           style={{ backgroundColor: arrowBaseColor }}
           aria-label="Scroll Left"
         >
@@ -76,13 +68,13 @@ export default function BodyMenu() {
         {/* Scrollable Menu */}
         <div
           ref={scrollRef}
-          className="overflow-x-auto whitespace-nowrap flex px-6 scroll-smooth no-scrollbar"
+          className="overflow-x-auto whitespace-nowrap flex items-center px-10 py-3 scroll-smooth no-scrollbar"
         >
           {menuItems.map((item, index) => (
             <span
               key={index}
               title={item}
-              className="text-sm font-medium cursor-pointer text-gray-700 hover:text-black px-4 whitespace-nowrap"
+              className="text-[15px] font-medium cursor-pointer text-gray-700 hover:text-black px-4 whitespace-nowrap"
             >
               {item}
             </span>
@@ -94,8 +86,7 @@ export default function BodyMenu() {
           onClick={() => scroll("right")}
           disabled={!canScrollRight}
           className={`p-2 rounded-full absolute right-0 z-10 top-1/2 -translate-y-1/2
-            ${canScrollRight ? "cursor-pointer" : "cursor-not-allowed opacity-40"}
-          `}
+            ${canScrollRight ? "cursor-pointer" : "cursor-not-allowed opacity-40"}`}
           style={{ backgroundColor: arrowBaseColor }}
           aria-label="Scroll Right"
         >
