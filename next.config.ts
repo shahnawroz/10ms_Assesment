@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
-// Check if we are in a production environment and deploying to GitHub Pages (or any subpath)
-const isGitHubPages = process.env.NEXT_PUBLIC_VERCEL_URL?.includes('github.io');
+// Check if we are in production and deploying to GitHub Pages
+const isGitHubPages = process.env.GITHUB_REPOSITORY && process.env.VERCEL === undefined;
 
 const nextConfig: NextConfig = {
   output: "export",
