@@ -1,12 +1,8 @@
-/** @type {import('next').NextConfig} */
-const isProd = process.env.NODE_ENV === 'production';
+import type { NextConfig } from "next";
 
-const nextConfig = {
-  output: 'export',
-  basePath: isProd ? '/10ms_Assesment' : '',
-  assetPrefix: isProd ? '/10ms_Assesment/' : '',
+const nextConfig: NextConfig = {
   images: {
-    domains: ['cdn.10minuteschool.com'],
+    domains: ["cdn.10minuteschool.com"],
   },
 };
 
