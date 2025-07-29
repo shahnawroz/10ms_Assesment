@@ -39,6 +39,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3  # More reliable than npx gh-pages
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # Use default token
+          github_token: ${{ secrets.GH_TOKEN }}  # Use default token
           publish_dir: ./out
           force_orphan: true  # Ensures clean deployment
