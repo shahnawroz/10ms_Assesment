@@ -2,7 +2,6 @@ import TitleSection from "@/app/components/Title";
 import BodyMenu from "@/app/components/BodyMenu";
 import InstructorCard, { Instructor } from "@/app/components/InstructorCard";
 import FeatureCardList from "@/app/components/FeatureList";
-import Image from "next/image";
 import IELTSGuideCard from "./components/IELTSGuideCard";
 import FeatureSection from "./components/FeatureSection";
 import AccordionSection from "./components/AccordionSection";
@@ -62,9 +61,6 @@ export default function Home() {
           </div>
 
           <div>
-            <h5 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
-              How the course is laid out
-            </h5>
             <IELTSGuideCard />
           </div>
 

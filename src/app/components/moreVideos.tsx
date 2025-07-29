@@ -128,7 +128,7 @@ export default function VideoSlider() {
     <div className="relative w-full px-4 sm:px-6 md:px-8 xl:px-0 max-w-screen-xl mx-auto">
       {/* Section Title */}
       <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 text-left">
-        <h1>আপনার জন্য আরও কিছু কোর্স</h1>
+        আপনার জন্য আরও কিছু কোর্স
       </h1>
 
       {/* Slider Container */}
