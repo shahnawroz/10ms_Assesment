@@ -38,6 +38,13 @@ const RightSidebar = () => {
     fetchData();
   }, []);
 
+  // Fixed pricing values
+  const pricing = {
+    originalPrice: "1100 BDT",
+    discountedPrice: "1000 BDT", // 10% off 1000
+    discountText: "10% OFF",
+  };
+
   const nextVideo = () => {
     if (!courseData?.media) return;
     setCurrentIndex((prevIndex) =>
@@ -85,7 +92,7 @@ const RightSidebar = () => {
         style={{ height: "400px" }}
       >
         <iframe
-          key={currentIndex} // This ensures the iframe reloads when index changes
+          key={currentIndex}
           width="100%"
           height="100%"
           src={`https://www.youtube.com/embed/${filteredVideos[currentIndex].resource_value}?autoplay=0`}
@@ -156,15 +163,15 @@ const RightSidebar = () => {
 
       {/* Pricing & CTA */}
       <div className="text-center bg-gray-50 p-4 rounded-md shadow-sm">
-        <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
-          {courseData.current_price}
-          <span className="line-through text-xs sm:text-sm text-gray-500 ml-2">
-            {courseData.original_price}
-          </span>
+        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 text-left">
+          {pricing.discountedPrice}
+          <div className="relative inline-block ml-4">
+            <div className="bg-[#ff815a] text-white text-sm font-semibold px-4 py-1 pl-6 rounded-r-full relative inline-block">
+              <span className="relative z-20">{pricing.discountText}</span>
+            </div>
+            <div className="absolute top-1/2 left-0 -translate-y-1/2 -ml-2 w-0 h-0 border-t-[12px] border-b-[12px] border-r-[12px] border-t-transparent border-b-transparent border-r-[#ff815a]"></div>
+          </div>
         </h3>
-        <p className="text-green-600 font-semibold text-xs sm:text-sm">
-          {courseData.discount_text}
-        </p>
 
         <button className="mt-3 sm:mt-4 w-full bg-green-600 text-white py-2 rounded-md font-semibold hover:bg-green-700 transition duration-200 text-sm sm:text-base">
           Enroll Now
