@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import { fetchIELTSCourse } from "../lib/api"; // Adjust the import path as needed
+import { fetchIELTSCourse } from "../lib/api";
 
 interface MediaItem {
   name: string;
@@ -17,7 +17,6 @@ interface CourseData {
   current_price: string;
   original_price: string;
   discount_text: string;
-  // Add other fields you need from the API response
 }
 
 const RightSidebar = () => {
@@ -87,10 +86,11 @@ const RightSidebar = () => {
         style={{ height: "400px" }}
       >
         <iframe
+          key={currentIndex} // This ensures the iframe reloads when index changes
           width="100%"
           height="100%"
           src={`https://www.youtube.com/embed/${filteredVideos[currentIndex].resource_value}?autoplay=0`}
-          title="Course Preview"
+          title={`Course Preview ${currentIndex + 1}`}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           className="w-full h-full"
@@ -104,16 +104,54 @@ const RightSidebar = () => {
               className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition"
               aria-label="Previous video"
             >
-              {/* SVG */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
             </button>
             <button
               onClick={nextVideo}
               className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition"
               aria-label="Next video"
             >
-              {/* SVG */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
             </button>
           </>
+        )}
+
+        {/* Video Indicator Dots */}
+        {filteredVideos.length > 1 && (
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+            {filteredVideos.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`h-2 w-2 rounded-full transition ${
+                  index === currentIndex ? "bg-white" : "bg-white/50"
+                }`}
+                aria-label={`Go to video ${index + 1}`}
+              />
+            ))}
+          </div>
         )}
       </div>
 
