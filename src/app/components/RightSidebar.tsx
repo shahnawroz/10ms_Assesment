@@ -1,7 +1,6 @@
 // components/RightSidebar.tsx
 "use client";
 
-import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { fetchIELTSCourse } from "../lib/api";
 
