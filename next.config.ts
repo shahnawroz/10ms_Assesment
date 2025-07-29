@@ -1,11 +1,12 @@
 import type { NextConfig } from "next";
 
-const isProd = process.env.NODE_ENV === "production";
+// Check if we are in a production environment and deploying to GitHub Pages (or any subpath)
+const isGitHubPages = process.env.NEXT_PUBLIC_VERCEL_URL?.includes('github.io');
 
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: isProd ? "/10ms_Assesment" : "",
-  assetPrefix: isProd ? "/10ms_Assesment/" : "",
+  basePath: isGitHubPages ? "/10ms_Assesment" : "",
+  assetPrefix: isGitHubPages ? "/10ms_Assesment/" : "",
   images: {
     unoptimized: true,
     domains: ["cdn.10minuteschool.com"],
