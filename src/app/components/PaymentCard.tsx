@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import FeatureCard from './FeatureCard';
 import { fetchIELTSCourse } from '../lib/api';
-import { Check, X } from 'lucide-react';
+import {  X } from 'lucide-react';
 
 type Section = {
   type: string;

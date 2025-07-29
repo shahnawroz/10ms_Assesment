@@ -3,9 +3,8 @@
 import { useRef, useState, useEffect } from "react";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import Image from "next/image";
-import { fetchIELTSCourse } from "../lib/api"; // Adjust the import path as necessary
+import { fetchIELTSCourse } from "../lib/api";
 
-// Define types for the API response
 type Testimonial = {
   id: string;
   description: string;
@@ -26,16 +25,6 @@ type ApiResponse = {
   sections: Section[];
 };
 
-type Video = {
-  id: string;
-  title: string;
-  score: string;
-  name: string;
-  thumbnail: string;
-  profile_image: string;
-  video_url: string;
-};
-
 export default function VideoSlider() {
   const sliderRef = useRef<HTMLDivElement>(null);
   const CARD_WIDTH = 320;
@@ -44,41 +33,28 @@ export default function VideoSlider() {
 
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-  const [videos, setVideos] = useState<Video[]>([]);
-  const [sectionTitle, setSectionTitle] = useState("Student Testimonials");
+  const [videos, setVideos] = useState<Testimonial[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchVideos = async () => {
       try {
         const data = (await fetchIELTSCourse()) as ApiResponse;
-        // Find the testimonials section in the API response
-        const testimonialsSection = data.sections.find(
-          (section) => section.type === "testimonials"
+        
+        // Find all sections that might contain videos
+        const videoSections = data.sections.filter(
+          section => section.type === "testimonials" || section.type === "videos"
         );
 
-        if (testimonialsSection) {
-          // Set the section title if available
-          if (testimonialsSection.name) {
-            setSectionTitle(testimonialsSection.name);
-          }
+        // Extract all videos from matching sections
+        const allVideos = videoSections.flatMap(section => 
+          section.values.filter(item => item.video_url)
+        );
 
-          if (testimonialsSection.values) {
-            const filteredVideos = testimonialsSection.values
-              .filter((testimonial) => testimonial.video_url) // Only include items with video_url
-              .map((testimonial, index) => ({
-                id: testimonial.id || `video-${index}`,
-                title: testimonial.testimonial || "Testimonial",
-                score:
-                  testimonial.description.replace("IELTS Score: ", "") || "",
-                name: testimonial.name,
-                thumbnail: testimonial.thumb || "/default-thumbnail.jpg",
-                profile_image:
-                  testimonial.profile_image || "/default-profile.jpg",
-                video_url: testimonial.video_url,
-              }));
-            setVideos(filteredVideos);
-          }
+        if (allVideos.length) {
+          setVideos(allVideos);
+        } else {
+          console.warn("No videos found in API response");
         }
       } catch (error) {
         console.error("Error fetching videos:", error);
@@ -126,7 +102,7 @@ export default function VideoSlider() {
 
   return (
     <div className="relative w-full px-4 sm:px-6 md:px-8 xl:px-0 max-w-screen-xl mx-auto">
-      {/* Section Title */}
+      {/* Hardcoded Bengali Title */}
       <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 text-left">
         আপনার জন্য আরও কিছু কোর্স
       </h1>
@@ -146,7 +122,7 @@ export default function VideoSlider() {
                 <iframe
                   className="rounded-md w-full h-full"
                   src={`https://www.youtube.com/embed/${video.video_url}`}
-                  title={video.title}
+                  title={video.testimonial}
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -164,7 +140,7 @@ export default function VideoSlider() {
               <div>
                 <p className="font-medium">{video.name}</p>
                 <p className="text-sm text-gray-500">
-                  IELTS Score: {video.score}
+                  {video.description || "IELTS Student"}
                 </p>
               </div>
             </div>
@@ -172,14 +148,14 @@ export default function VideoSlider() {
         ))}
       </div>
 
-      {/* Arrows */}
+      {/* Navigation Arrows */}
       {canScrollLeft && (
         <button
           onClick={() => scroll("left")}
           className="absolute top-1/2 -left-6 transform -translate-y-1/2 bg-white shadow rounded-full p-2 z-10 hover:bg-gray-100 transition-colors"
           aria-label="Scroll left"
         >
-          <ChevronLeft />
+          <ChevronLeft className="w-5 h-5" />
         </button>
       )}
       {canScrollRight && (
@@ -188,7 +164,7 @@ export default function VideoSlider() {
           className="absolute top-1/2 -right-6 transform -translate-y-1/2 bg-white shadow rounded-full p-2 z-10 hover:bg-gray-100 transition-colors"
           aria-label="Scroll right"
         >
-          <ChevronRight />
+          <ChevronRight className="w-5 h-5" />
         </button>
       )}
     </div>
