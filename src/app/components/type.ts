@@ -1,7 +1,8 @@
-import React, { JSX } from "react";
+import React from "react";
 
-export type FeatureCard = {
-  icon?: JSX.Element;
-  title?: React.ReactNode;  // allows JSX for styling
-  description: React.ReactNode;
-};
+export interface FeatureCard {
+  icon?: React.ReactNode;
+  title?: React.ReactNode; // Changed from string to ReactNode
+  description?: React.ReactNode;
+  className?: string;
+}
